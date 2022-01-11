@@ -1,0 +1,88 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Seguidores {
+  id            Int             @default(autoincrement()) @id
+  seguidor      String
+  usuario       Usuario         @relation (fields: [usuarioid], references: [id])
+  usuarioid     Int
+  createdAt     DateTime        @default(now()) @map("created_at")
+}
+
+model Seguindo {
+  id            Int             @default(autoincrement()) @id
+  seguindo      Int
+  usuario       Usuario         @relation (fields: [usuarioid] , references: [id] )
+  usuarioid     Int
+  createdAt     DateTime        @default(now()) @map("created_at")
+}
+
+// model Usuarios {
+//   id            Int             @id @default(autoincrement())
+//   nomeUsuario   String          @unique
+//   senha         String
+// }
+
+
+model Usuario {
+  id            Int             @default(autoincrement()) @id
+  nome          String          
+  email         String          @unique
+  senha         String
+  imagem        String
+  bio           String
+  nascimento    String
+  seguidor      Seguidores[]
+  seguidorid    Int
+  seguindo      Seguindo[]
+  seguindoid    Int
+  criado_em     String                
+  modificado_em String        
+  tweet         Tweet[]
+  tweetid       Int
+  favorites     Favorites[]
+  favoritesid   Int
+}
+
+model Tweet{
+  id            Int             @default(autoincrement()) @id
+  texto         String
+  categories    Categoriestweet[]
+  favorites     Favorites[]
+  data_postagem DateTime        @default(now())   @map(name: "data_postagem")
+  usuario       Usuario         @relation (fields: [usuarioid] , references: [id])
+  usuarioid     Int
+}
+
+model Category {
+  id            Int             @default(autoincrement()) @id
+  nome          String
+  tweetid       Categoriestweet[]
+  createdAt     DateTime        @default(now()) @map("createdAt")
+}
+
+model Categoriestweet {
+  tweet         Tweet           @relation(fields: [tweetid], references: [id])
+  tweetid       Int
+  category      Category        @relation(fields: [categoryid], references: [id]) 
+  categoryid    Int             
+  createdAt     DateTime        @default(now()) @map("createdAt")
+@@id([tweetid, categoryid])
+}
+
+model Favorites {
+  tweet        Tweet            @relation(fields: [tweetid], references: [id])
+  tweetid      Int
+  usuario      Usuario          @relation(fields: [usuarioid], references: [id]) 
+  usuarioid    Int
+@@id([tweetid, usuarioid])
+}
