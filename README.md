@@ -113,8 +113,8 @@ Para uma melhor documentação do Projeto, utilizamos o Swagger para a visualiza
 
 Por exemplo, na rota Usuario, utilizamos o Swagger da seguinte forma, no navegador digitamos: localhost:3000/api, que irá nos apresentar a página abaixo:
 
-![image-20220112150713563](C:\Users\victo\AppData\Roaming\Typora\typora-user-images\image-20220112150713563.png)
-
+![image](https://user-images.githubusercontent.com/89050695/149212672-8f36ba1d-0ba3-4930-824d-3aa8b6546269.png)
+Em
 Dessa forma também é demonstrado todos os endpoints das Rotas e subrotas necessárias para o Projeto, contudo, dessa vez ulizamos o decorator `@ApiTags('nomedasubrota')`, assim temos o Swagger separado por rotas, o que facilita entendimento da utilização de cada uma.
 
 Podemos observar também os endpoints `post`e `get`da rota `auth`, responsável pela autenticação e autorização da interação dos usuários, apenas se este estiver utilizando um token válido.
@@ -123,14 +123,16 @@ Podemos observar também os endpoints `post`e `get`da rota `auth`, responsável 
 
 As infomações vem do `body` utilizando a `application/json`.
 
-![image-20220112162400095](C:\Users\victo\AppData\Roaming\Typora\typora-user-images\image-20220112162400095.png)
+![image](https://user-images.githubusercontent.com/89050695/149212869-206bbacd-3bce-4067-b351-4487d8fb1291.png)
 
+Em
 Atenção! Por fins didáticos na imagem acima foi informada a senha do usuário, contudo, em uma aplicação de produção, esse dado não seve ser informado!
 
 Em seguida temos a opção de executar ou limpar as informações do body e logo abaixo temos  a resposta, e através do `JWT` temos um token de acesso válido,  conforme abaixo:
 
-![image-20220112164125324](C:\Users\victo\AppData\Roaming\Typora\typora-user-images\image-20220112164125324.png)
+![image](https://user-images.githubusercontent.com/89050695/149213072-a332fbe2-7c9e-4901-a8dc-5f259b5ac53f.png)
 
+Em
 Dessa forma implementamos na pasta Usuario o `bycript`e através da `hash`é possível definir quantas vezes aquela senha será "embaralhada" devolvendo um token válido para o acesso.
 
 Para fazer esse teste utilizamos o endereço: <http://localhost:3000/api/#/usuario/UsuarioController_create>
