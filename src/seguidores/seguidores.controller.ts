@@ -3,7 +3,9 @@ import { SeguidoresService } from './seguidores.service';
 import { CreateSeguidoresDto } from './dto/create-seguidores.dto';
 import { UpdateSeguidoresDto } from './dto/update-seguidores.dto';
 import { AuthGuard } from '@nestjs/passport';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags( 'seguidores' )
 @Controller('seguidores')
 export class SeguidoresController {
   // eslint-disable-next-line prettier/prettier

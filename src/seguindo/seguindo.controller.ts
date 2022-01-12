@@ -3,7 +3,9 @@ import { SeguindoService } from './seguindo.service';
 import { CreateSeguindoDto } from './dto/create-seguindo.dto';
 import { UpdateSeguindoDto } from './dto/update-seguindo.dto';
 import { AuthGuard } from '@nestjs/passport';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags( 'seguindo' )
 @Controller('seguindo')
 export class SeguindoController {
   // eslint-disable-next-line prettier/prettier

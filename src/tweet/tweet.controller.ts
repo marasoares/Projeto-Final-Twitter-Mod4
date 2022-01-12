@@ -3,7 +3,9 @@ import { TweetService } from './tweet.service';
 import { CreateTweetDto } from './dto/create-tweet.dto';
 import { UpdateTweetDto } from './dto/update-tweet.dto';
 import { AuthGuard } from '@nestjs/passport';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags( 'tweet' )
 @Controller('tweet')
 export class TweetController {
   // eslint-disable-next-line prettier/prettier
