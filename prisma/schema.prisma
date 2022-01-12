@@ -42,15 +42,12 @@ model Usuario {
   bio           String
   nascimento    String
   seguidor      Seguidores[]
-  seguidorid    Int
   seguindo      Seguindo[]
-  seguindoid    Int
-  criado_em     String                
-  modificado_em String        
+  criado_em     DateTime?        @default(now())                 
+  modificado_em DateTime?        @default(now())         
   tweet         Tweet[]
-  tweetid       Int
   favorites     Favorites[]
-  favoritesid   Int
+
 }
 
 model Tweet{
@@ -66,7 +63,7 @@ model Tweet{
 model Category {
   id            Int             @default(autoincrement()) @id
   nome          String
-  tweetid       Categoriestweet[]
+  tweet         Categoriestweet[]
   createdAt     DateTime        @default(now()) @map("createdAt")
 }
 

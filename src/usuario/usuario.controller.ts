@@ -10,9 +10,8 @@ export class UsuarioController {
   constructor(private readonly usuarioService: UsuarioService) {}
 
   @Post()
-  @UseGuards(AuthGuard('jwt'))
   create(@Body() createUsuarioDto: CreateUsuarioDto) {
-    return this.usuarioService.createPrisma(createUsuarioDto);
+    return this.usuarioService.create(createUsuarioDto);
   }
 
   @Get()

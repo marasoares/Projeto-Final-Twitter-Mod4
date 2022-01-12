@@ -4,19 +4,19 @@ import { UpdateUsuarioDto } from './dto/update-usuario.dto';
 import * as bcrypt from 'bcrypt';
 import { Usuario } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
-// import { LoginDto } from 'src/auth/dto/login.dto';
+import { LoginDto } from 'src/auth/dto/login.dto';
 
 @Injectable()
 export class UsuarioService {
   // eslint-disable-next-line prettier/prettier
   constructor(private prisma: PrismaService) {}
 
-  async create(data: CreateUsuarioDto): Promise<Usuario> {
+  async create(data: CreateUsuarioDto): Promise<CreateUsuarioDto> {
     data.senha = await bcrypt.hash(data.senha, 10);
     return await this.prisma.usuario.create({ data });
   }
 
-  async findByLogin(login: CreateUsuarioDto): Promise<Usuario> {
+  async findByLogin(login: LoginDto): Promise<Usuario> {
     const user = await this.prisma.usuario.findFirst({
       where: {
         email: login.email,
