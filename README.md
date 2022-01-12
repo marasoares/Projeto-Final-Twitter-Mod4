@@ -139,6 +139,8 @@ Para fazer esse teste utilizamos o endereço: <http://localhost:3000/api/#/usuar
 
 Para rodar o projeto utilize o comando: `npm run start:dev`
 
+Deploy no Heroku:https://projeto-twitter-mod4.herokuapp.com/
+
 Projeto elaborado pela aluna: Mara Paula Soares
 
 Likedin: <https://www.linkedin.com/in/mara-paula-soares>
